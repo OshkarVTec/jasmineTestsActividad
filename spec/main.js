@@ -2,8 +2,8 @@
  * Test Suite
  */
 describe(`${User.name} Class`, () => {
+	let model;
 	describe("default values", () => {
-		let model;
 		beforeAll(() => {
 			model = new User();
 		});
@@ -21,6 +21,28 @@ describe(`${User.name} Class`, () => {
 		it("middle name defaults to empty", () => {
 			// assert
 			expect(model.middleName).toBe("");
+		});
+	});
+
+	describe("full name", () => {
+		beforeAll(() => {
+			model = new User({ firstName: "Dylan", lastName: "Israel" });
+		});
+
+		it("returns full name with middle name", () => {
+			model.middleName = "James";
+
+			response = model.getFullName();
+
+			expect(response).toBe("Dylan J. Israel");
+		});
+
+		it("returns full name without middle name", () => {
+			model.middleName = "";
+
+			response = model.getFullName();
+
+			expect(response).toBe("Dylan Israel");
 		});
 	});
 });
