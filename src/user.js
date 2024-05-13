@@ -16,4 +16,8 @@ class User {
 		}
 		return `${this.firstName} ${this.lastName}`.trim();
 	}
+
+	sayMyName() {
+		window.alert(this.fullName);
+	}
 }
