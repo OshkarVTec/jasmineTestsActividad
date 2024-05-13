@@ -2,12 +2,33 @@
  * Test Suite
  */
 describe(`${User.name} Class`, () => {
-	describe("sayMyName", () => {
-		it("should display the full name in an alert", () => {
-			const user = new User({ firstName: "John", lastName: "Doe" });
-			spyOn(window, "alert");
-			user.sayMyName();
-			expect(window.alert).toHaveBeenCalledWith("John Doe");
+	let model;
+	let mockedService;
+	beforeEach(() => {
+		mockedService = {
+			lastId: null,
+			user: {},
+			getUserById(id) {
+				this.lastId = id;
+				return this.user;
+			},
+		};
+		const data = {
+			firstName: "John",
+			middleName: "Emilio",
+			lastName: "Doe",
+			id: 1,
+		};
+		model = new User(data, mockedService);
+	});
+
+	describe("getMyFullUserData", () => {
+		it("gets iser data by id", async () => {
+			mockedService.lastId = null;
+
+			const result = await model.getMyFullUserData();
+
+			expect(mockedService.lastId).toBe(1);
 		});
 	});
 });
