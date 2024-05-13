@@ -22,5 +22,14 @@ describe(`${User.name} Class`, () => {
 
 			expect(model.fullNamePieces).toEqual([firstName, middleName, lastName]);
 		});
+
+		it("has first name", () => {
+			const firstName = "John";
+			const lastName = "Doe";
+
+			model = new User({ firstName, lastName });
+
+			expect(model.fullName).toMatch(/John/);
+		});
 	});
 });
