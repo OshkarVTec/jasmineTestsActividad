@@ -22,6 +22,10 @@ class User {
 		return `${this.firstName} ${this.lastName}`.trim();
 	}
 
+	get fullNamePieces() {
+		return [this.firstName, this.middleName, this.lastName];
+	}
+
 	async getMyFullUserData() {
 		return this.userService.getUserById(this.id);
 	}
