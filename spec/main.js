@@ -1,27 +1,23 @@
-// Majority
-describe("Test Example", () => {
-	it("returns true", () => {
-		expect(true).toBe(true);
-	});
-});
-
-function insertDashes(str) {
-	// write code here
+class User {
+	firstName;
+	lastName;
+	middleName;
+	constructor(data = {}) {
+		this.firstName = data.firstName || "";
+		this.lastName = data.lastName || "";
+		this.middleName = data.middleName;
+	}
 }
 /**
  * Test Suite
  */
-describe("insertDashes()", () => {
-	it("insert dashes in between chars", () => {
+describe(`${User.name} Class`, () => {
+	it("first name defaults to empty", () => {
 		// arrange
-		const value = "aba caba";
-
+		const data = { firstName: null };
 		// act
-		const result = insertDashes(value);
-		// log
-		console.log("result: ", result);
-
+		const model = new User(data);
 		// assert
-		expect(result).toBe(undefined);
+		expect(model.firstName).toBe("");
 	});
 });
