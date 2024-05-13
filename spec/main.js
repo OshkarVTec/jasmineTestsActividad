@@ -32,7 +32,7 @@ describe(`${User.name} Class`, () => {
 		it("returns full name with middle name", () => {
 			model.middleName = "James";
 
-			response = model.getFullName();
+			response = model.fullName;
 
 			expect(response).toBe("Dylan J. Israel");
 		});
@@ -40,7 +40,7 @@ describe(`${User.name} Class`, () => {
 		it("returns full name without middle name", () => {
 			model.middleName = "";
 
-			response = model.getFullName();
+			response = model.fullName;
 
 			expect(response).toBe("Dylan Israel");
 		});

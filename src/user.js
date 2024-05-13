@@ -8,7 +8,7 @@ class User {
 		this.middleName = data.middleName || "";
 	}
 
-	getFullName() {
+	get fullName() {
 		if (this.middleName) {
 			let middleInitial = "";
 			middleInitial = this.middleName.charAt(0) + ".";
